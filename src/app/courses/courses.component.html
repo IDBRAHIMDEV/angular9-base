@@ -14,7 +14,18 @@
 
         
           <ul class="list-group">
-              <li class="list-group-item" *ngFor="let course of listCourses">{{ course.label }}</li>
+              <li class="list-group-item" 
+                *ngFor="let course of listCourses; index as i, odd as o, even as e, first as f, last as l">
+                  
+                  index: {{ i }} - odd: {{ o }} - even: {{ e }} - first: {{ f }} - last: {{ l }}
+                  {{ course.label }}
+
+                 <div class="text-right">
+                   <button (click)="deleteCourse(course.id)" class="btn mr-1 btn-sm btn-danger">Delete</button>
+                   <button class="btn btn-sm btn-warning">Edit</button>
+                 </div>
+
+              </li>
           </ul>
       </div>
     </div>

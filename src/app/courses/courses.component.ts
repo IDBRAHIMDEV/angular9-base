@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-courses',
@@ -32,6 +32,35 @@ export class CoursesComponent {
       id: 0,
       label: ""
     };
+  }
+
+  deleteCourse(id: number) {
+    
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'To delete this item ?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({
+          title: "Deleted",
+          text: "Course deleted SuccessFully",
+          icon: "success",
+          timer: 5000
+        })
+       
+           this.listCourses = this.listCourses.filter(course => course.id !== id)
+
+      }
+    })
+
+    // if(confirm("Are you sure to delete this course ?")) {
+
+    //   this.listCourses = this.listCourses.filter(course => course.id !== id)
+    // }
   }
   
 }
