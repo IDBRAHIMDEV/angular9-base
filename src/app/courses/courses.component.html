@@ -1,0 +1,22 @@
+
+
+<div class="row">
+  <div class="col-md-12">
+
+    <h1>{{ title }}</h1>
+    
+    <div class="row">
+      <div class="col-6 mx-auto">
+
+        <input (keyup.enter)="addCourse()" placeholder="New course..." [(ngModel)]="myCourse.label" class="form-control" type="text">
+        
+        {{ myCourse.label }}
+
+        
+          <ul class="list-group">
+              <li class="list-group-item" *ngFor="let course of listCourses">{{ course.label }}</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
