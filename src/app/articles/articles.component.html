@@ -6,26 +6,27 @@
         <h1>Blog</h1>
     </div>
     <div class="col-md-6 text-right">
-        <button class="btn btn-success btn-sm">
+        <button (click)="showForm()" class="btn btn-success btn-sm">
             <i class="fa fa-plus"></i>
         </button>
 </div>
 </div>
 
-<div class="row my-3">
+<div class="row my-3" *ngIf="display">
     <div class="col-md-6 mx-auto">
         <!-- (.form-group>label+input.form-control#title)+(.form-group>label+textarea.form-control#body)+button.btn.btn-block.btn-primary>i.fa.fa-send+{ New article} -->
         <div class="form-group">
-            <label for="">Title</label>
-            <input type="text" class="form-control" id="title">
+            <label for="title">Title</label>
+            <input [(ngModel)]="myArticle.title" type="text" class="form-control" id="title">
         </div>
 
         <div class="form-group">
-            <label for="">Body</label>
-            <textarea name="" id="body" rows="4" class="form-control"></textarea>
+            <label for="body">Body</label>
+            <textarea [(ngModel)]="myArticle.body" id="body" rows="4" class="form-control"></textarea>
         </div>
 
-        <button class="btn btn-block btn-primary"><i class="fa fa-send"></i> New article</button>
+        <button *ngIf="editable" (click)="updateArticle()" class="btn btn-block btn-warning"><i class="fa fa-refresh"></i> Update article</button>
+        <button *ngIf="!editable" (click)="persistArticle()" class="btn btn-block btn-primary"><i class="fa fa-send"></i> New article</button>
     </div>
 </div>
 
@@ -40,14 +41,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let article of articles">
-                    <td>{{ article.title }}</td>
+                <tr (dblclick)="deleteArticle(article.id)" *ngFor="let article of articles">
+                    <td>
+                        <button (click)="changeStatus(article)"
+                        
+                        [ngClass]="{
+                            'btn-success': article.active,
+                            'btn-warning': !article.active
+                        }" 
+                        class="btn btn-sm mr-3">
+                            <i class="fa fa-power-off"></i>
+                        </button>
+                         {{ article.title }}
+                    </td>
                     <td>{{ article.body }}</td>
                     <td nowrap class="text-right">
-                        <button class=" mr-1 btn btn-sm btn-warning">
+                        <button (click)="editArticle(article) " class=" mr-1 btn btn-sm btn-warning">
                             <i class="fa fa-pencil"></i>
                         </button>
-                        <button class="btn btn-sm btn-dark">
+                        <button (click)="deleteArticle(article.id)" class="btn btn-sm btn-dark">
                             <i class="fa fa-times"></i>
                         </button>
                     </td>
