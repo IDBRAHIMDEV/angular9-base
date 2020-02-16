@@ -11,4 +11,8 @@ export class UserService {
   getUser() {
     return this.http.get("https://api.github.com/users");
   }
+
+  searchUser(query: string) {
+    return this.http.get(`https://api.github.com/search/users?q=${query}`)
+  }
 }

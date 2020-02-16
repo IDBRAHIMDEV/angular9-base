@@ -7,7 +7,11 @@ import { UserService } from '../user.service';
   styleUrls: ['./github-users.component.css']
 })
 export class GithubUsersComponent implements OnInit {
-users: any[] = [];
+
+  search: string = "";
+  users: any[] = [];
+  oldUsers: any[] = [];
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -16,7 +20,20 @@ users: any[] = [];
 
   getAllUser() {
     this.userService.getUser()
-        .subscribe((response: any[]) => this.users = response);
+        .subscribe((response: any[]) => {
+         this.oldUsers = this.users = response
+        });
+  }
+
+  searchUsers() {
+   
+    if(this.search == "") {
+      this.users = this.oldUsers;
+      return;
+    }
+
+    this.userService.searchUser(this.search)
+        .subscribe((response: any[]) => this.users = response['items'])
   }
 
 }

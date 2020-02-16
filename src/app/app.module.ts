@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { GithubUsersComponent } from './github-users/github-users.component';
+import { ArticlesComponent } from './articles/articles.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { GithubUsersComponent } from './github-users/github-users.component';
     LayoutComponent,
     IntroComponent,
     ContentComponent,
-    GithubUsersComponent
+    GithubUsersComponent,
+    ArticlesComponent
   ],
   imports: [
     BrowserModule,
