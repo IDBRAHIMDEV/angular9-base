@@ -1,11 +1,32 @@
 <!-- 
 (.row>(.col-md-6>h1{Blog})+(.col-md-6.text-right>button.btn.btn-success.btn-sm{New}))+(.row>.col-md-12>table.table.table-hover>(thead>tr>th*3)+(tbody>tr>td*3)) -->
 
-<div class="row">
+<div class="row mt-4">
     <div class="col-md-6">
         <h1>Blog</h1>
     </div>
-    <div class="col-md-6 text-right"><button class="btn btn-success btn-sm">New</button></div>
+    <div class="col-md-6 text-right">
+        <button class="btn btn-success btn-sm">
+            <i class="fa fa-plus"></i>
+        </button>
+</div>
+</div>
+
+<div class="row my-3">
+    <div class="col-md-6 mx-auto">
+        <!-- (.form-group>label+input.form-control#title)+(.form-group>label+textarea.form-control#body)+button.btn.btn-block.btn-primary>i.fa.fa-send+{ New article} -->
+        <div class="form-group">
+            <label for="">Title</label>
+            <input type="text" class="form-control" id="title">
+        </div>
+
+        <div class="form-group">
+            <label for="">Body</label>
+            <textarea name="" id="body" rows="4" class="form-control"></textarea>
+        </div>
+
+        <button class="btn btn-block btn-primary"><i class="fa fa-send"></i> New article</button>
+    </div>
 </div>
 
 <div class="row">
@@ -22,9 +43,13 @@
                 <tr *ngFor="let article of articles">
                     <td>{{ article.title }}</td>
                     <td>{{ article.body }}</td>
-                    <td class="text-right">
-                        <button class="btn btn-sm btn-warning">Edit</button>
-                        <button class="btn btn-sm btn-dark">Delete</button>
+                    <td nowrap class="text-right">
+                        <button class=" mr-1 btn btn-sm btn-warning">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-dark">
+                            <i class="fa fa-times"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>
