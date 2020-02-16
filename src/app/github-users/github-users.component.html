@@ -1,0 +1,29 @@
+
+<div class="row my-2">
+    <div class="col-md-12">
+        <h1>List of Users</h1>
+    </div>
+</div>
+
+
+
+
+<div class="row my-2">
+    <div class="col-md-12"><input type="text" class="form-control"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-3" *ngFor="let user of users">
+        <div class="card my-3">
+            <img src="{{ user.avatar_url }}" alt="" class="card-img-top">
+            <div class="card-body">
+                <h1 class="card-title">{{ user.login }}</h1>
+                <div class="card-text">
+                    <a target="__blank" href="{{ user.html_url }}" class="btn btn-success btn-block">
+                        Read more...
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

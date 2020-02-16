@@ -10,6 +10,9 @@ import { IntroComponent } from './intro/intro.component';
 import { ContentComponent } from './content/content.component';
 
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { GithubUsersComponent } from './github-users/github-users.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +22,13 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     LayoutComponent,
     IntroComponent,
-    ContentComponent
+    ContentComponent,
+    GithubUsersComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
