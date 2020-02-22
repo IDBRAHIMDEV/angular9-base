@@ -1,7 +1,9 @@
 {
   "posts": [
     {
-      "active": true,
+      "title": "Learn Angular",
+      "body": "dfdfdfdfdf",
+      "active": false,
       "id": 1
     }
   ]
